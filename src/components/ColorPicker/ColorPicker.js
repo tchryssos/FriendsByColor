@@ -1,4 +1,4 @@
-import React, { PureComponet } from 'react'
+import React, { PureComponent } from 'react'
 
 export default class ColorPicker extends PureComponent {
 	render() {
