@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
+import './styles.scss'
 
-export default class ColorPicker extends PureComponent {
+export default class ColorPicker extends PureComponent { // eslint-disable-line
 	render() {
 		return (
-			<div>
-				Colorpicker!
+			<div className="colorpicker">
+
 			</div>
 		)
 	}
