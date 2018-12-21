@@ -10,7 +10,7 @@ export default class HueColorStrip extends PureComponent {
 
 	componentDidMount() {
 		this.context = this.canvasRef.current.getContext('2d')
-		const hueGradient = this.context.createLinearGradient(0, 0, 170, 0)
+		const hueGradient = this.context.createLinearGradient(0, 0, 0, 150)
 		hueGradient.addColorStop(0, colorScale(0))
 		hueGradient.addColorStop(0.083, colorScale(30))
 		hueGradient.addColorStop(0.166, colorScale(60))
@@ -26,7 +26,7 @@ export default class HueColorStrip extends PureComponent {
 		hueGradient.addColorStop(1, colorScale(360))
 
 		this.context.fillStyle = hueGradient
-		this.context.fillRect(20, 20, 150, 100)
+		this.context.fillRect(0, 0, 100, 300)
 	}
 
 	render() {
