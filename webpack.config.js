@@ -28,7 +28,7 @@ module.exports = {
 								'@babel/react',
 								'@babel/preset-env',
 							],
-						}
+						},
 					},
 				],
 			},
@@ -63,9 +63,8 @@ module.exports = {
 		],
 		alias: {
 			components: path.join(__dirname, 'src/components'),
-			// static: path.join(__dirname, 'src/static'),
+			logic: path.join(__dirname, 'src/logic'),
 			pages: path.join(__dirname, 'src/pages'),
-			// constants: path.join(__dirname, 'src/constants'),
 		},
 	},
 }
