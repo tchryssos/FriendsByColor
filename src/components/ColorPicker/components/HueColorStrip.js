@@ -1,17 +1,16 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { colorScale } from 'logic/color'
+import { HueContext } from '../context'
 
 export default class HueColorStrip extends PureComponent {
 	constructor(props) {
 		super(props)
 		this.canvasRef = React.createRef()
-		this.onClick = this.onClick.bind(this)
 	}
 
 	componentDidMount() {
-		this.context = this.canvasRef.current.getContext('2d')
-		const hueGradient = this.context.createLinearGradient(0, 0, 0, 300)
+		this.canvasContext = this.canvasRef.current.getContext('2d')
+		const hueGradient = this.canvasContext.createLinearGradient(0, 0, 0, 300)
 		hueGradient.addColorStop(0, colorScale(0))
 		hueGradient.addColorStop(0.083, colorScale(30))
 		hueGradient.addColorStop(0.166, colorScale(60))
@@ -26,29 +25,28 @@ export default class HueColorStrip extends PureComponent {
 		hueGradient.addColorStop(0.913, colorScale(330))
 		hueGradient.addColorStop(1, colorScale(360))
 
-		this.context.fillStyle = hueGradient
-		this.context.fillRect(0, 0, 100, 300)
+		this.canvasContext.fillStyle = hueGradient
+		this.canvasContext.fillRect(0, 0, 100, 300)
 	}
-
-	onClick = e => this.props.setHue(e, this.context)
 
 	render() {
 		return (
-			<>
-				<canvas
-					height={300}
-					width={50}
-					className="hueStrip"
-					ref={this.canvasRef}
-					onClick={this.onClick}
-				/>
-				<p>{this.props.hue}</p>
-			</>
+			<HueContext.Consumer>
+				{
+					({ hue, setHue }) => (
+					<>
+						<canvas
+							height={300}
+							width={50}
+							className="hueStrip"
+							ref={this.canvasRef}
+							onClick={e => setHue(e, this.canvasContext)}
+						/>
+						<p>{hue}</p>
+					</>
+					)
+				}
+			</HueContext.Consumer>
 		)
 	}
-}
-
-HueColorStrip.propTypes = {
-	hue: PropTypes.string.isRequired,
-	setHue: PropTypes.func.isRequired,
 }

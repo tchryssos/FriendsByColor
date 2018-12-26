@@ -1,3 +1,3 @@
-export SLColorStrip from './SLColorStrip'
+export SLColorBox from './SLColorBox'
 
 export HueColorStrip from './HueColorStrip'
