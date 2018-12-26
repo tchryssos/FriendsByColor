@@ -1,18 +1,17 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { colorScale } from 'logic/color'
-import './styles.scss'
 
 export default class HueColorStrip extends PureComponent {
 	constructor(props) {
 		super(props)
 		this.canvasRef = React.createRef()
-		this.setHue = this.setHue.bind(this)
+		this.onClick = this.onClick.bind(this)
 	}
 
 	componentDidMount() {
 		this.context = this.canvasRef.current.getContext('2d')
-		const hueGradient = this.context.createLinearGradient(0, 0, 0, 150)
+		const hueGradient = this.context.createLinearGradient(0, 0, 0, 300)
 		hueGradient.addColorStop(0, colorScale(0))
 		hueGradient.addColorStop(0.083, colorScale(30))
 		hueGradient.addColorStop(0.166, colorScale(60))
@@ -31,17 +30,17 @@ export default class HueColorStrip extends PureComponent {
 		this.context.fillRect(0, 0, 100, 300)
 	}
 
-	setHue = () => {
-		debugger
-	}
+	onClick = e => this.props.setHue(e, this.context)
 
 	render() {
 		return (
 			<>
 				<canvas
+					height={300}
+					width={50}
 					className="hueStrip"
 					ref={this.canvasRef}
-					onClick={this.setHue}
+					onClick={this.onClick}
 				/>
 				<p>{this.props.hue}</p>
 			</>
@@ -51,4 +50,5 @@ export default class HueColorStrip extends PureComponent {
 
 HueColorStrip.propTypes = {
 	hue: PropTypes.string.isRequired,
+	setHue: PropTypes.func.isRequired,
 }

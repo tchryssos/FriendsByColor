@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { colorScale } from 'logic/color'
-import './styles.scss'
 
 export default class SLColorStrip extends PureComponent {
 	constructor(props) {
@@ -10,7 +9,7 @@ export default class SLColorStrip extends PureComponent {
 
 	componentDidMount() {
 		this.context = this.canvasRef.current.getContext('2d')
-		const sLGradient = this.context.createLinearGradient(0, 0, 0, 150)
+		const sLGradient = this.context.createLinearGradient(0, 0, 0, 300)
 		sLGradient.addColorStop(0, colorScale(0))
 		sLGradient.addColorStop(0.083, colorScale(30))
 		sLGradient.addColorStop(0.166, colorScale(60))
@@ -26,12 +25,14 @@ export default class SLColorStrip extends PureComponent {
 		sLGradient.addColorStop(1, colorScale(360))
 
 		this.context.fillStyle = sLGradient
-		this.context.fillRect(0, 0, 100, 300)
+		this.context.fillRect(0, 0, 300, 300)
 	}
 
 	render() {
 		return (
 			<canvas
+				height={300}
+				width={300}
 				className="sLStrip"
 				ref={this.canvasRef}
 			/>
