@@ -13,7 +13,7 @@ export default class SLColorBox extends PureComponent {
 		this.fillBox()
 	}
 
-	componentWillReceiveProps() {
+	componentDidUpdate() {
 		this.fillBox()
 	}
 
