@@ -7,6 +7,7 @@ export default class HueColorStrip extends PureComponent {
 	constructor(props) {
 		super(props)
 		this.canvasRef = React.createRef()
+		this.setHue = this.setHue.bind(this)
 	}
 
 	componentDidMount() {
@@ -30,12 +31,17 @@ export default class HueColorStrip extends PureComponent {
 		this.context.fillRect(0, 0, 100, 300)
 	}
 
+	setHue = () => {
+		debugger
+	}
+
 	render() {
 		return (
 			<>
 				<canvas
 					className="hueStrip"
 					ref={this.canvasRef}
+					onClick={this.setHue}
 				/>
 				<p>{this.props.hue}</p>
 			</>
