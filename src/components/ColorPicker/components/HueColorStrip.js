@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { colorScale } from 'logic/color'
 import './styles.scss'
 
@@ -31,10 +32,17 @@ export default class HueColorStrip extends PureComponent {
 
 	render() {
 		return (
-			<canvas
-				className="hueStrip"
-				ref={this.canvasRef}
-			/>
+			<>
+				<canvas
+					className="hueStrip"
+					ref={this.canvasRef}
+				/>
+				<p>{this.props.hue}</p>
+			</>
 		)
 	}
+}
+
+HueColorStrip.propTypes = {
+	hue: PropTypes.string.isRequired,
 }
