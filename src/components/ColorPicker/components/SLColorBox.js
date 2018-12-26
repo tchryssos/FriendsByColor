@@ -10,6 +10,7 @@ export default class SLColorBox extends PureComponent {
 	}
 
 	componentDidMount() {
+		this.canvasContext = this.canvasRef.current.getContext('2d')
 		this.fillBox()
 	}
 
@@ -18,34 +19,40 @@ export default class SLColorBox extends PureComponent {
 	}
 
 	fillBox = () => {
-		const canvasContext = this.canvasRef.current.getContext('2d')
 		// Fill the SL box with selected hue
-		canvasContext.fillStyle = this.context.hue
-		canvasContext.fillRect(0, 0, 300, 300)
+		this.canvasContext.fillStyle = this.context.hue
+		this.canvasContext.fillRect(0, 0, 300, 300)
 
 		// Fill the SL box with a gradient to white
-		const grdWhite = canvasContext.createLinearGradient(0, 0, 300, 0)
+		const grdWhite = this.canvasContext.createLinearGradient(0, 0, 300, 0)
 		grdWhite.addColorStop(0, 'rgba(255,255,255,1)')
 		grdWhite.addColorStop(1, 'rgba(255,255,255,0)')
-		canvasContext.fillStyle = grdWhite
-		canvasContext.fillRect(0, 0, 300, 300)
+		this.canvasContext.fillStyle = grdWhite
+		this.canvasContext.fillRect(0, 0, 300, 300)
 
 		// Fill the SL box with a gradient to black
-		const grdBlack = canvasContext.createLinearGradient(0, 0, 0, 300)
+		const grdBlack = this.canvasContext.createLinearGradient(0, 0, 0, 300)
 		grdBlack.addColorStop(0, 'rgba(0,0,0,0)')
 		grdBlack.addColorStop(1, 'rgba(0,0,0,1)')
-		canvasContext.fillStyle = grdBlack
-		canvasContext.fillRect(0, 0, 300, 300)
+		this.canvasContext.fillStyle = grdBlack
+		this.canvasContext.fillRect(0, 0, 300, 300)
 	}
 
 	render() {
 		return (
-			<canvas
-				height={300}
-				width={300}
-				className="sLBox"
-				ref={this.canvasRef}
-			/>
+			<HueContext.Consumer>
+				{
+					({ hue, color, setHue, setColor }) => (
+						<canvas
+							height={300}
+							width={300}
+							className="sLBox"
+							ref={this.canvasRef}
+							onClick={e => setColor(e, this.canvasContext)}
+						/>
+					)
+				}
+			</HueContext.Consumer>
 		)
 	}
 }
