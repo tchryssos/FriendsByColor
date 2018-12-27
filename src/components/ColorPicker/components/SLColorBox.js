@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react'
+import {
+	CANVAS_HEIGHT as C_HEIGHT,
+	CANVAS_COLOR_WIDTH as C_WIDTH,
+} from 'constants/canvas'
 import { ColorContext } from '../context'
 import { ColorCursor } from '../components'
 import './styles.scss'
-// import { colorScale } from 'logic/color'
 
 export default class SLColorBox extends PureComponent {
 	constructor(props) {
@@ -37,6 +40,12 @@ export default class SLColorBox extends PureComponent {
 			this.context.setColor(e, this.canvasContext)
 		}
 	}
+	/*
+		The function below is also passsed to the cursor component.
+		This is because after a drag, the pointerUp action is fired on the cursor
+		which tracks with the mouse drag. By passing the function,
+		I make sure that "dragging" ends over the canvas or cursor.
+	*/
 	pointerUp = (e) => {
 		this.setState({ dragging: false })
 		this.context.setColor(e, this.canvasContext)
@@ -45,29 +54,29 @@ export default class SLColorBox extends PureComponent {
 	fillBox = () => {
 		// Fill the SL box with selected hue
 		this.canvasContext.fillStyle = this.context.hue
-		this.canvasContext.fillRect(0, 0, 300, 300)
+		this.canvasContext.fillRect(0, 0, C_WIDTH, C_HEIGHT)
 
 		// Fill the SL box with a gradient to white
-		const grdWhite = this.canvasContext.createLinearGradient(0, 0, 300, 0)
+		const grdWhite = this.canvasContext.createLinearGradient(0, 0, C_WIDTH, 0)
 		grdWhite.addColorStop(0, 'rgba(255,255,255,1)')
 		grdWhite.addColorStop(1, 'rgba(255,255,255,0)')
 		this.canvasContext.fillStyle = grdWhite
-		this.canvasContext.fillRect(0, 0, 300, 300)
+		this.canvasContext.fillRect(0, 0, C_WIDTH, C_HEIGHT)
 
 		// Fill the SL box with a gradient to black
-		const grdBlack = this.canvasContext.createLinearGradient(0, 0, 0, 300)
+		const grdBlack = this.canvasContext.createLinearGradient(0, 0, 0, C_HEIGHT)
 		grdBlack.addColorStop(0, 'rgba(0,0,0,0)')
 		grdBlack.addColorStop(1, 'rgba(0,0,0,1)')
 		this.canvasContext.fillStyle = grdBlack
-		this.canvasContext.fillRect(0, 0, 300, 300)
+		this.canvasContext.fillRect(0, 0, C_WIDTH, C_HEIGHT)
 	}
 
 	render() {
 		return (
 			<>
 				<canvas
-					height={300}
-					width={300}
+					height={C_HEIGHT}
+					width={C_WIDTH}
 					className="sLBox"
 					ref={this.canvasRef}
 					onPointerDown={this.pointerDown}

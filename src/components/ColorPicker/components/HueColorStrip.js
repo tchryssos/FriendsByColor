@@ -1,5 +1,9 @@
 import React, { PureComponent } from 'react'
 import { colorScale } from 'logic/color'
+import {
+	CANVAS_HEIGHT as C_HEIGHT,
+	CANVAS_HUE_WIDTH as C_WIDTH,
+} from 'constants/canvas'
 import { ColorContext } from '../context'
 import { ColorCursor } from '../components'
 import './styles.scss'
@@ -12,7 +16,7 @@ export default class HueColorStrip extends PureComponent {
 
 	componentDidMount() {
 		this.canvasContext = this.canvasRef.current.getContext('2d')
-		const hueGradient = this.canvasContext.createLinearGradient(0, 0, 0, 300)
+		const hueGradient = this.canvasContext.createLinearGradient(0, 0, 0, C_HEIGHT)
 		hueGradient.addColorStop(0, colorScale(0))
 		hueGradient.addColorStop(0.083, colorScale(30))
 		hueGradient.addColorStop(0.166, colorScale(60))
@@ -28,7 +32,7 @@ export default class HueColorStrip extends PureComponent {
 		hueGradient.addColorStop(1, colorScale(360))
 
 		this.canvasContext.fillStyle = hueGradient
-		this.canvasContext.fillRect(0, 0, 16, 300)
+		this.canvasContext.fillRect(0, 0, C_WIDTH, C_HEIGHT)
 	}
 
 	render() {
@@ -38,8 +42,8 @@ export default class HueColorStrip extends PureComponent {
 					({ color, setHue }) => (
 					<>
 						<canvas
-							height={300}
-							width={16}
+							height={C_HEIGHT}
+							width={C_WIDTH}
 							className="hueStrip"
 							ref={this.canvasRef}
 							onClick={e => setHue(e, this.canvasContext)}
