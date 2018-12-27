@@ -9,7 +9,7 @@ export default class SLColorBox extends PureComponent {
 		super(props)
 		this.canvasRef = React.createRef()
 
-		// see comments above the mouse methods below
+		// see comments above the pointer methods below
 		this.state = {
 			dragging: false,
 		}
@@ -24,7 +24,6 @@ export default class SLColorBox extends PureComponent {
 		this.fillBox()
 	}
 
-	onClick = e => this.context.setColor(e, this.canvasContext)
 	/*
 		The below actions allow color change while dragging on the canvas.
 		This cannot be done with an onDrag action, as that requires
@@ -32,13 +31,16 @@ export default class SLColorBox extends PureComponent {
 		like the user is going to drag and drop it somewhere.
 		This looks bad and works bad.
 	*/
-	mouseDown = () => this.setState({ dragging: true })
-	mouseMove = (e) => {
+	pointerDown = () => this.setState({ dragging: true })
+	pointerMove = (e) => {
 		if (this.state.dragging) {
 			this.context.setColor(e, this.canvasContext)
 		}
 	}
-	mouseUp = () => this.setState({ dragging: false })
+	pointerUp = (e) => {
+		this.setState({ dragging: false })
+		this.context.setColor(e, this.canvasContext)
+	}
 
 	fillBox = () => {
 		// Fill the SL box with selected hue
@@ -68,12 +70,11 @@ export default class SLColorBox extends PureComponent {
 					width={300}
 					className="sLBox"
 					ref={this.canvasRef}
-					onClick={this.onClick}
-					onMouseDown={this.mouseDown}
-					onMouseMove={this.mouseMove}
-					onMouseUp={this.mouseUp}
+					onPointerDown={this.pointerDown}
+					onPointerMove={this.pointerMove}
+					onPointerUp={this.pointerUp}
 				/>
-				<ColorCursor />
+				<ColorCursor pointerUp={this.pointerUp} />
 			</>
 		)
 	}

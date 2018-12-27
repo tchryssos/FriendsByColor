@@ -35,7 +35,8 @@
 	    "react/jsx-indent": [2, "tab"],
 	    "react/jsx-indent-props": ["error", "tab"],
 	    "react/jsx-filename-extension": 0,
-	    "react/jsx-no-bind": 1
+		"react/jsx-no-bind": 1,
+		"react/require-default-props": 0
 	},
 	"parserOptions": {
 	    "ecmaFeatures": {
