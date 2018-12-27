@@ -8,12 +8,15 @@ export default class ColorCursor extends PureComponent {
 		return (
 			<ColorContext.Consumer>
 				{
-					({ hue, color }) => (
+					({ hue, color, colorX, colorY, hueY }) => (
 						<div
-							className="colorCursor"
+							className={`colorCursor ${this.props.className}`}
 							style={
 								{
-									backgroundColor: this.props.type === 'hue' ? hue : color,
+									backgroundColor: this.props.hue ? hue : color,
+									// pixels are subtracted to center cursor
+									top: (this.props.hue ? hueY : colorY) - 10,
+									left: (this.props.hue ? undefined : colorX) - 10,
 								}
 							}
 						/>
@@ -25,9 +28,11 @@ export default class ColorCursor extends PureComponent {
 }
 
 ColorCursor.propTypes = {
-	type: PropTypes.oneOf(['hue', 'color']),
+	className: PropTypes.string,
+	hue: PropTypes.bool,
 }
 
 ColorCursor.defaultProps = {
-	type: 'hue',
+	className: '',
+	hue: false,
 }

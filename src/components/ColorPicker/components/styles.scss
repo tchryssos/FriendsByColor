@@ -2,16 +2,19 @@
     margin-right: 8px;
 }
 
+canvas:hover {
+    cursor: pointer;
+}
+
+// Color Cursor
 .colorCursor {
     height: 16px;
     width: 16px;
     border: 3px solid white;
     border-radius: 100%;
     position: absolute;
-    top: 20px;
-    left: 315px;
 }
 
-canvas:hover {
-    cursor: crosshair;
+.hueCursor {
+    left: 314px;
 }

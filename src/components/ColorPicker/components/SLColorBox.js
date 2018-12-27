@@ -73,7 +73,7 @@ export default class SLColorBox extends PureComponent {
 					onMouseMove={this.mouseMove}
 					onMouseUp={this.mouseUp}
 				/>
-				<ColorCursor type="color" />
+				<ColorCursor />
 			</>
 		)
 	}

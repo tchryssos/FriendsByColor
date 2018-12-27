@@ -44,7 +44,7 @@ export default class HueColorStrip extends PureComponent {
 							ref={this.canvasRef}
 							onClick={e => setHue(e, this.canvasContext)}
 						/>
-						<ColorCursor type="hue" />
+						<ColorCursor hue className="hueCursor" />
 						<p>{color}</p>
 					</>
 					)

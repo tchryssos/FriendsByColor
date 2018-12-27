@@ -4,6 +4,9 @@ import React from 'react'
 export const ColorContext = React.createContext({
 	hue: '',
 	color: '',
+	colorX: undefined,
+	colorY: undefined,
+	hueY: undefined,
 	setHue: () => {},
 	setColor: () => {},
 })
