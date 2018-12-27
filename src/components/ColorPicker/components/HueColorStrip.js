@@ -27,7 +27,7 @@ export default class HueColorStrip extends PureComponent {
 		hueGradient.addColorStop(1, colorScale(360))
 
 		this.canvasContext.fillStyle = hueGradient
-		this.canvasContext.fillRect(0, 0, 100, 300)
+		this.canvasContext.fillRect(0, 0, 16, 300)
 	}
 
 	render() {
@@ -38,7 +38,7 @@ export default class HueColorStrip extends PureComponent {
 					<>
 						<canvas
 							height={300}
-							width={50}
+							width={16}
 							className="hueStrip"
 							ref={this.canvasRef}
 							onClick={e => setHue(e, this.canvasContext)}
