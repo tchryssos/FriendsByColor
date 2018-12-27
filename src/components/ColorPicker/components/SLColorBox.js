@@ -7,6 +7,11 @@ export default class SLColorBox extends PureComponent {
 	constructor(props) {
 		super(props)
 		this.canvasRef = React.createRef()
+
+		// see comments above mouse methods below
+		this.state = {
+			dragging: false,
+		}
 	}
 
 	componentDidMount() {
@@ -38,17 +43,35 @@ export default class SLColorBox extends PureComponent {
 		this.canvasContext.fillRect(0, 0, 300, 300)
 	}
 
+	/*
+		The below actions allow color changewhile dragging on the canvas.
+		This cannot be done with an onDrag action, as that requires
+		the canvas be set to "draggable", which allows it to be "lifted"
+		like the user is going to drag and drop it somewhere.
+		This looks bad and works bad.
+	*/
+	mouseDown = () => this.setState({ dragging: true })
+	mouseMove = (e) => {
+		if (this.state.dragging) {
+			this.context.setColor(e, this.canvasContext)
+		}
+	}
+	mouseUp = () => this.setState({ dragging: false })
+
 	render() {
 		return (
 			<HueContext.Consumer>
 				{
-					({ hue, color, setHue, setColor }) => (
+					({ setColor }) => (
 						<canvas
 							height={300}
 							width={300}
 							className="sLBox"
 							ref={this.canvasRef}
 							onClick={e => setColor(e, this.canvasContext)}
+							onMouseDown={this.mouseDown}
+							onMouseMove={this.mouseMove}
+							onMouseUp={this.mouseUp}
 						/>
 					)
 				}

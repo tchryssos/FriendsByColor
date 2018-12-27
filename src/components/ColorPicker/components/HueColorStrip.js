@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { colorScale } from 'logic/color'
 import { HueContext } from '../context'
+import './styles.scss'
 
 export default class HueColorStrip extends PureComponent {
 	constructor(props) {
@@ -33,7 +34,7 @@ export default class HueColorStrip extends PureComponent {
 		return (
 			<HueContext.Consumer>
 				{
-					({ hue, color, setHue, setColor }) => (
+					({ color, setHue }) => (
 					<>
 						<canvas
 							height={300}

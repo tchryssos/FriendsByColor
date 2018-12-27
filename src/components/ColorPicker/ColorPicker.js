@@ -21,6 +21,7 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 		}
 
 		const setColor = (e, ctx) => {
+			e.preventDefault()
 			const x = e.nativeEvent.offsetX
 			const y = e.nativeEvent.offsetY
 			const canvasData = ctx.getImageData(x, y, 1, 1).data
