@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { HueContext } from '../context'
+import { ColorContext } from '../context'
 import { ColorCursor } from '../components'
 import './styles.scss'
 // import { colorScale } from 'logic/color'
@@ -73,10 +73,10 @@ export default class SLColorBox extends PureComponent {
 					onMouseMove={this.mouseMove}
 					onMouseUp={this.mouseUp}
 				/>
-				<ColorCursor />
+				<ColorCursor type="color" />
 			</>
 		)
 	}
 }
 
-SLColorBox.contextType = HueContext
+SLColorBox.contextType = ColorContext

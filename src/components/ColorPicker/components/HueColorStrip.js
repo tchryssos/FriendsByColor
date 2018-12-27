@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { colorScale } from 'logic/color'
-import { HueContext } from '../context'
+import { ColorContext } from '../context'
+import { ColorCursor } from '../components'
 import './styles.scss'
 
 export default class HueColorStrip extends PureComponent {
@@ -32,7 +33,7 @@ export default class HueColorStrip extends PureComponent {
 
 	render() {
 		return (
-			<HueContext.Consumer>
+			<ColorContext.Consumer>
 				{
 					({ color, setHue }) => (
 					<>
@@ -43,11 +44,12 @@ export default class HueColorStrip extends PureComponent {
 							ref={this.canvasRef}
 							onClick={e => setHue(e, this.canvasContext)}
 						/>
+						<ColorCursor type="hue" />
 						<p>{color}</p>
 					</>
 					)
 				}
-			</HueContext.Consumer>
+			</ColorContext.Consumer>
 		)
 	}
 }

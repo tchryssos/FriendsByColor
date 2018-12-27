@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { HueContext } from './context'
+import { ColorContext } from './context'
 import { HueColorStrip, SLColorBox } from './components'
 import './styles.scss'
 
@@ -44,10 +44,10 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 
 	render() {
 		return (
-			<HueContext.Provider value={this.state}>
+			<ColorContext.Provider value={this.state}>
 				<SLColorBox />
 				<HueColorStrip />
-			</HueContext.Provider>
+			</ColorContext.Provider>
 		)
 	}
 }
