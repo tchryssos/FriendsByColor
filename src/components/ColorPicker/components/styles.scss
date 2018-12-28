@@ -15,6 +15,10 @@ canvas:hover {
     position: absolute;
 }
 
-.hueCursor {
-    left: 314px;
+// Color Display
+.colorDisplay {
+    height: 300px;
+    width: 100px;
+    display: inline-block;
+    margin-right: 8px;
 }

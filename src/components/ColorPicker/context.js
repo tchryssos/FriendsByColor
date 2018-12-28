@@ -6,7 +6,7 @@ export const ColorContext = React.createContext({
 	color: '',
 	colorX: undefined,
 	colorY: undefined,
-	hueY: undefined,
+	hueY: 0,
 	setHue: () => {},
 	setColor: () => {},
 })

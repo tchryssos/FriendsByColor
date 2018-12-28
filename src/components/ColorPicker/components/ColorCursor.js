@@ -8,7 +8,7 @@ export default class ColorCursor extends PureComponent {
 		return (
 			<ColorContext.Consumer>
 				{
-					({ colorX, colorY, hueY }) => (
+					({ hue, color, colorX, colorY, hueY }) => (
 						<div
 							className={`colorCursor ${this.props.className}`}
 							onPointerUp={this.props.pointerUp}
@@ -16,7 +16,8 @@ export default class ColorCursor extends PureComponent {
 								{
 									// pixels are subtracted to center cursor
 									top: (this.props.hue ? hueY : colorY) - 10,
-									left: (this.props.hue ? 314 : colorX - 10),
+									left: (this.props.hue ? 422 : colorX - 10),
+									backgroundColor: this.props.hue ? hue : color,
 								}
 							}
 						/>
