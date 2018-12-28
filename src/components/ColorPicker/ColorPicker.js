@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { colorScale } from 'logic/color'
 import { ColorContext } from './context'
 import { HueColorStrip, SLColorBox, ColorDisplay } from './components'
 
@@ -18,6 +19,10 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 				`,
 				hueY: e.clientY,
 			})
+
+			// this function also needs to change color to match
+			// contextual changes in color after changes in hue
+
 		}
 
 		const setColor = (e, ctx) => {
@@ -36,8 +41,11 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 		}
 
 		this.state = {
-			hue: 'rgb(255, 0, 0)',
-			color: '',
+			hue: `${colorScale(0)}`,
+			color: `${colorScale(0)}`,
+			colorX: undefined,
+			colorY: undefined,
+			hueY: undefined,
 			setHue,
 			setColor,
 		}
