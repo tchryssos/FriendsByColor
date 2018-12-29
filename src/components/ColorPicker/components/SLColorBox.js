@@ -59,15 +59,15 @@ export default class SLColorBox extends PureComponent {
 
 		// Fill the SL box with a gradient to white
 		const grdWhite = this.canvasContext.createLinearGradient(0, 0, C_WIDTH, 0)
-		grdWhite.addColorStop(0, 'rgba(255,255,255,1)')
-		grdWhite.addColorStop(1, 'rgba(255,255,255,0)')
+		grdWhite.addColorStop(0, 'hsla(0, 0%, 100%, 1)')
+		grdWhite.addColorStop(1, 'hsla(0, 0%, 100%, 0)')
 		this.canvasContext.fillStyle = grdWhite
 		this.canvasContext.fillRect(0, 0, C_WIDTH, C_HEIGHT)
 
 		// Fill the SL box with a gradient to black
 		const grdBlack = this.canvasContext.createLinearGradient(0, 0, 0, C_HEIGHT)
-		grdBlack.addColorStop(0, 'rgba(0,0,0,0)')
-		grdBlack.addColorStop(1, 'rgba(0,0,0,1)')
+		grdBlack.addColorStop(0, 'hsla(0, 0%, 0%, 0)')
+		grdBlack.addColorStop(1, 'hsla(0, 0%, 0%, 1)')
 		this.canvasContext.fillStyle = grdBlack
 		this.canvasContext.fillRect(0, 0, C_WIDTH, C_HEIGHT)
 	}
