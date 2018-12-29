@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react'
-import { hsvColorScale } from 'logic/color'
+import { rgb } from 'd3'
+import { hsv } from 'd3-hsv'
+import { hsvColorScale, hsvValuesMapper } from 'logic/color'
 import { ColorContext } from './context'
 import { HueColorStrip, SLColorBox, ColorDisplay } from './components'
 
@@ -19,22 +21,17 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 				`,
 				hueY: e.clientY,
 			})
-
-			// this function also needs to change color to match
-			// contextual changes in color after changes in hue
-
 		}
 
-		const setColor = (e, ctx) => {
+		const setColor = (e) => {
 			const xOffset = e.nativeEvent.offsetX
 			const yOffset = e.nativeEvent.offsetY
-			const canvasData = ctx.getImageData(xOffset, yOffset, 1, 1).data
+			const { saturation, value } = hsvValuesMapper(xOffset, yOffset)
+			const rgbColor = rgb(hsv(0, saturation, value))
+			const rgbString = `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
+
 			this.setState({
-				color: `
-					rgb(${canvasData[0]},
-						${canvasData[1]},
-						${canvasData[2]})
-				`,
+				color: rgbString,
 				colorX: e.clientX,
 				colorY: e.clientY,
 			})
