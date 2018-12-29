@@ -28,7 +28,10 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 			const yOffset = e.nativeEvent.offsetY
 			const { saturation, value } = hsvValuesMapper(xOffset, yOffset)
 			const rgbColor = rgb(hsv(0, saturation, value))
-			const rgbString = `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
+			const rgbString = `rgb(
+				${Math.round(rgbColor.r)},
+				${Math.round(rgbColor.g)},
+				${Math.round(rgbColor.b)})`
 
 			this.setState({
 				color: rgbString,
