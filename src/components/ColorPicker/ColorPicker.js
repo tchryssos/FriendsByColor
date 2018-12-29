@@ -37,11 +37,11 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 		}
 
 		this.state = {
-			hue: 0,
-			color: `${hsvColorScale(0)}`,
+			hue: 180,
+			color: `${hsvColorScale(180)}`,
 			colorX: CC_WIDTH,
 			colorY: 0,
-			hueY: 0,
+			hueY: 150,
 			setHue,
 			setColor,
 		}

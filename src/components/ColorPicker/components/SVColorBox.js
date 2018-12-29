@@ -7,7 +7,6 @@ import './styles.scss'
 export default class SLColorBox extends PureComponent {
 	constructor(props) {
 		super(props)
-		this.canvasRef = React.createRef()
 		this.pointerUp = this.pointerUp.bind(this)
 
 		// see comments above the pointer methods below
