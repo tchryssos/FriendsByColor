@@ -18,7 +18,7 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 		const setColor = (e) => {
 			const xOffset = e.nativeEvent.offsetX
 			const yOffset = e.nativeEvent.offsetY
-			const colorString = coordinatesToColor(this.hue, xOffset, yOffset)
+			const colorString = coordinatesToColor(this.state.hue, xOffset, yOffset)
 			this.setState({
 				color: colorString,
 				colorX: e.clientX,
