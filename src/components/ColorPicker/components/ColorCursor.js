@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { hsvColorScale } from 'logic/color'
 import { ColorContext } from '../context'
 import './styles.scss'
 
@@ -17,7 +18,7 @@ export default class ColorCursor extends PureComponent {
 									// pixels are subtracted to center cursor
 									top: (this.props.hue ? hueY : colorY) - 10,
 									left: (this.props.hue ? 421 : colorX - 10),
-									backgroundColor: this.props.hue ? hue : color,
+									backgroundColor: this.props.hue ? hsvColorScale(hue) : color,
 								}
 							}
 						/>

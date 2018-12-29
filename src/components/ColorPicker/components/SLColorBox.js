@@ -3,6 +3,7 @@ import {
 	CANVAS_HEIGHT as C_HEIGHT,
 	CANVAS_COLOR_WIDTH as C_WIDTH,
 } from 'constants/canvas'
+import { hsvColorScale } from 'logic/color'
 import { ColorContext } from '../context'
 import { ColorCursor } from '../components'
 import './styles.scss'
@@ -54,7 +55,7 @@ export default class SLColorBox extends PureComponent {
 
 	fillBox = () => {
 		// Fill the SL box with selected hue
-		this.canvasContext.fillStyle = this.context.hue
+		this.canvasContext.fillStyle = hsvColorScale(this.context.hue)
 		this.canvasContext.fillRect(0, 0, C_WIDTH, C_HEIGHT)
 
 		// Fill the SL box with a gradient to white

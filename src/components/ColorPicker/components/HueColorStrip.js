@@ -39,7 +39,7 @@ export default class HueColorStrip extends PureComponent {
 		return (
 			<ColorContext.Consumer>
 				{
-					({ color, setHue }) => (
+					({ setHue }) => (
 					<>
 						<canvas
 							height={C_HEIGHT}
@@ -49,7 +49,6 @@ export default class HueColorStrip extends PureComponent {
 							onClick={e => setHue(e, this.canvasContext)}
 						/>
 						<ColorCursor hue className="hueCursor" />
-						<p>{color}</p>
 					</>
 					)
 				}
