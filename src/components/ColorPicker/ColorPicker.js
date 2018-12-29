@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { hslColorScale } from 'logic/color'
+import { hsvColorScale } from 'logic/color'
 import { ColorContext } from './context'
 import { HueColorStrip, SLColorBox, ColorDisplay } from './components'
 
@@ -41,8 +41,8 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 		}
 
 		this.state = {
-			hue: `${hslColorScale(0)}`,
-			color: `${hslColorScale(0)}`,
+			hue: `${hsvColorScale(0)}`,
+			color: `${hsvColorScale(0)}`,
 			colorX: undefined,
 			colorY: undefined,
 			hueY: undefined,

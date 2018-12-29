@@ -1,7 +1,23 @@
 import * as d3 from 'd3'
+import { hsv, interpolateHsvLong } from 'd3-hsv'
 
-// eslint-disable-next-line import/prefer-default-export
-export const hslColorScale = d3.scaleLinear()
+export const hsvColorScale = d3.scaleLinear()
 	.domain([0, 360])
-	.range([d3.hsl(0, 1, 0.5), d3.hsl(360, 1, 0.5)])
-	.interpolate(d3.interpolateHslLong)
+	.range([hsv(0, 1, 1), hsv(360, 1, 1)])
+	.interpolate(interpolateHsvLong)
+
+
+export const hsvDimensionMapper = dimension => (
+	d3.scaleLinear()
+		.domain([0, 1])
+		.range(0, dimension)
+)
+
+export const hsvCoordinateMapper = (height, width) => {
+	const mappedHeight = hsvDimensionMapper(height)
+	const mappedWidth = hsvDimensionMapper(width)
+	return ({
+		x: mappedWidth,
+		y: mappedHeight,
+	})
+}
