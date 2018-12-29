@@ -4,38 +4,59 @@ import {
 	CANVAS_COLOR_WIDTH as CC_WIDTH, CANVAS_HEIGHT as C_HEIGHT,
 } from 'constants/canvas'
 
+// SCALES
 export const hsvColorScale = d3.scaleLinear()
 	.domain([0, 360])
 	.range([hsv(0, 1, 1), hsv(360, 1, 1)])
 	.interpolate(interpolateHsvLong)
 
-export const hsvCoordinateXScale = d3.scaleLinear()
+// This scale takes a Y coordinate value and returns an hsv 'hue' value
+// Note that the domain is 'inverted'
+export const hsvYToHueScale = d3.scaleLinear()
+	.domain([C_HEIGHT, 0])
+	.range(0, 360)
+
+// This scale takes an hsv 'saturation' value and returns an X coordinate
+export const hsvSaturationToXScale = d3.scaleLinear()
 	.domain([0, 1])
 	.range([0, CC_WIDTH])
 
-export const hsvCoordinateYScale = d3.scaleLinear()
+// This scale takes an hsv 'value' value and returns a Y coordinate
+export const hsvValueToYScale = d3.scaleLinear()
 	.domain([0, 1])
 	.range([0, C_HEIGHT])
 
-export const hsvSaturationXScale = d3.scaleLinear()
+// This scale takes an X coordinate and returns an hsv 'saturation' value
+export const hsvXToSaturationScale = d3.scaleLinear()
 	.domain([0, CC_WIDTH])
 	.range([0, 1])
 
-// Note that the domain is "inverted"
-export const hsvValueYScale = d3.scaleLinear()
+// This scale takes a Y coordinate and returns an hsv 'value value
+// Note that the domain is 'inverted'
+export const hsvYToValueScale = d3.scaleLinear()
 	.domain([C_HEIGHT, 0])
 	.range([0, 1])
 
+// FUNCTIONS
 // This function takes in the hsv 'saturation' and 'value' values
 // and returns a pair of X, Y coordinates to navigate the canvas.
 export const hsvCoordinatesMapper = (saturation, value) => ({
-	x: hsvCoordinateXScale(value),
-	y: hsvCoordinateYScale(saturation),
+	x: hsvSaturationToXScale(saturation),
+	y: hsvValueToYScale(value),
 })
 
 // This function takes in a set of XY coordinates from the canvas
 // and returns the appropriate hsv 'value' and 'saturation' values
 export const hsvValuesMapper = (x, y) => ({
-	saturation: hsvSaturationXScale(x),
-	value: hsvValueYScale(y),
+	saturation: hsvXToSaturationScale(x),
+	value: hsvYToValueScale(y),
 })
+
+export const coordinatesToColor = (x, y, hue) => {
+	const { saturation, value } = hsvValuesMapper(x, y)
+	const rgbColor = d3.rgb(hsv(hue, saturation, value))
+	return `rgb(
+		${Math.round(rgbColor.r)},
+		${Math.round(rgbColor.g)},
+		${Math.round(rgbColor.b)})`
+}
