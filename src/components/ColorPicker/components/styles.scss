@@ -1,9 +1,5 @@
-.sLBox {
-    margin-right: 8px;
-}
-
-canvas:hover {
-    cursor: pointer;
+@mixin colorPickerHeight {
+    height: 300px;
 }
 
 // Color Cursor
@@ -15,9 +11,13 @@ canvas:hover {
     position: absolute;
 }
 
+.colorCursor:hover {
+    cursor: pointer;
+}
+
 // SVColorBox
 @mixin sV {
-    height: 300px;
+    @include colorPickerHeight;
     width: 300px;
 }
 
@@ -30,7 +30,7 @@ canvas:hover {
 .sVContainer {
     @include sV;
     display: inline-block;
-    margin-right: 8px;
+    margin-right: 16px;
     border: 1px solid rgb(230, 230, 230)
 }
 
@@ -48,10 +48,42 @@ canvas:hover {
     background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))
 }
 
+// Hue Strip
+@mixin hue {
+    @include colorPickerHeight;
+    width: 17px;
+}
+
+.hueStripContainer {
+    @include hue;
+    display: inline-block;
+}
+
+.hueStrip {
+    @include hue;
+    position: absolute;
+    background-image: linear-gradient(
+        to bottom,
+        red,
+        #ff8000,
+        yellow,
+        #80ff00,
+        lime,
+        #00ff80,
+        cyan,
+        #0080ff,
+        blue,
+        #8000ff,
+        magenta,
+        #ff0080,
+        red
+    )
+}
+
 // Color Display
 .colorDisplay {
     height: 300px;
     width: 100px;
     display: inline-block;
-    margin-right: 8px;
+    margin-right: 16px;
 }

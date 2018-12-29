@@ -16,8 +16,8 @@ export default class ColorCursor extends PureComponent {
 							style={
 								{
 									// pixels are subtracted to center cursor
-									top: (this.props.hue ? hueY : colorY) - 10,
-									left: (this.props.hue ? 421 : colorX - 10),
+									marginTop: (this.props.hue ? hueY : colorY) - 10,
+									marginLeft: (this.props.hue ? 421 : colorX - 10),
 									backgroundColor: (
 										this.props.hue ? hsvColorScale(hue) : color
 									),

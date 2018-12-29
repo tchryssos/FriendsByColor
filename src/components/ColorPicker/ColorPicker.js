@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { hsvColorScale, coordinatesToColor, coordinatesToHue } from 'logic/color'
 import {
-	CANVAS_COLOR_WIDTH as CC_WIDTH, CANVAS_HEIGHT as C_HEIGHT,
+	CANVAS_COLOR_WIDTH as CC_WIDTH,
 } from 'constants/canvas'
 import { ColorContext } from './context'
 import { HueColorStrip, SVColorBox, ColorDisplay } from './components'
@@ -31,8 +31,8 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 			const colorString = coordinatesToColor(this.state.hue, xOffset, yOffset)
 			this.setState({
 				color: colorString,
-				colorX: e.clientX,
-				colorY: e.clientY,
+				colorX: xOffset,
+				colorY: yOffset,
 			})
 		}
 

@@ -45,7 +45,12 @@ export default class SLColorBox extends PureComponent {
 			<ColorContext.Consumer>
 				{
 					({ hue }) => (
-						<div className="sVContainer">
+						<div
+							className="sVContainer"
+							onPointerDown={this.pointerDown}
+							onPointerMove={this.pointerMove}
+							onPointerUp={this.pointerUp}
+						>
 							<div
 								className="sVHueBox"
 								style={{
