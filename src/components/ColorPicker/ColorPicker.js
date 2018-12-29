@@ -4,7 +4,7 @@ import {
 	CANVAS_COLOR_WIDTH as CC_WIDTH, CANVAS_HEIGHT as C_HEIGHT,
 } from 'constants/canvas'
 import { ColorContext } from './context'
-import { HueColorStrip, SLColorBox, ColorDisplay } from './components'
+import { HueColorStrip, SVColorBox, ColorDisplay } from './components'
 
 export default class ColorPicker extends PureComponent { // eslint-disable-line
 	constructor(props) {
@@ -51,7 +51,7 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 		return (
 			<ColorContext.Provider value={this.state}>
 				<ColorDisplay />
-				<SLColorBox />
+				<SVColorBox />
 				<HueColorStrip />
 			</ColorContext.Provider>
 		)
