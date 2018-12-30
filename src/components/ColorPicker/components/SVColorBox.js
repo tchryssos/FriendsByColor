@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { hsvColorScale } from 'logic/color'
-import { ColorContext } from '../context'
+import { ColorContext } from 'logic/contexts/color'
 import { ColorCursor } from '../components'
 import './styles.scss'
 

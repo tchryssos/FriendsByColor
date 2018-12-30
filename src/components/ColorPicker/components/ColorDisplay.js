@@ -1,5 +1,5 @@
 import React from 'react'
-import { ColorContext } from '../context'
+import { ColorContext } from 'logic/contexts/color'
 import './styles.scss'
 
 export default () => (

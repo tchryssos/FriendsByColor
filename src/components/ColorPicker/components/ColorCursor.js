@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { hsvColorScale } from 'logic/color'
-import { ColorContext } from '../context'
+import { ColorContext } from 'logic/contexts/color'
 import './styles.scss'
 
 export default class ColorCursor extends PureComponent {

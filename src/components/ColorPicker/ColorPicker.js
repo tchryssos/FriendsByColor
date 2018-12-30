@@ -3,7 +3,7 @@ import { hsvColorScale, coordinatesToColor, coordinatesToHue } from 'logic/color
 import {
 	CANVAS_COLOR_WIDTH as CC_WIDTH,
 } from 'constants/canvas'
-import { ColorContext } from './context'
+import { ColorContext } from 'logic/contexts/color'
 import { HueColorStrip, SVColorBox, ColorDisplay } from './components'
 
 export default class ColorPicker extends PureComponent { // eslint-disable-line

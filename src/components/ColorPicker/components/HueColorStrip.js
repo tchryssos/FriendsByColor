@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { ColorContext } from '../context'
+import { ColorContext } from 'logic/contexts/color'
 import { ColorCursor } from '../components'
 import './styles.scss'
 
