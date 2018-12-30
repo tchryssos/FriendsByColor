@@ -40,7 +40,7 @@ export default class HueColorStrip extends PureComponent {
 				onPointerUp={this.pointerUp}
 			>
 				<div className="hueStrip" />
-				<ColorCursor hue pointerUp={this.pointerUp} />
+				{/* <ColorCursor hue pointerUp={this.pointerUp} /> */}
 			</div>
 		)
 	}

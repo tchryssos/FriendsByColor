@@ -12,6 +12,7 @@ export default class SLColorBox extends PureComponent {
 		// see comments above the pointer methods below
 		this.state = {
 			dragging: false,
+			counter: 0,
 		}
 	}
 
@@ -58,7 +59,7 @@ export default class SLColorBox extends PureComponent {
 							/>
 							<div className="sVWhiteGradientBox" />
 							<div className="sVBlackGradientBox" />
-							<ColorCursor pointerUp={this.pointerUp} />
+							{/* <ColorCursor pointerUp={this.pointerUp} /> */}
 						</div>
 					)
 				}
