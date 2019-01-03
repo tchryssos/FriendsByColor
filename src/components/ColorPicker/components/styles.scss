@@ -1,5 +1,9 @@
-@mixin colorPickerHeight {
-    height: 300px;
+@import 'src/styles/canvas';
+
+// ColorPicker
+.colorPickerCenter {
+    display: flex;
+    justify-content: center;
 }
 
 // Color Cursor
@@ -17,8 +21,8 @@
 
 // SVColorBox
 @mixin sV {
-    @include colorPickerHeight;
-    width: 300px;
+    @include canvasHeight;
+    @include canvasColorWidth;
 }
 
 @mixin sVBox {
@@ -54,7 +58,7 @@
 
 // Hue Strip
 @mixin hue {
-    @include colorPickerHeight;
+    @include canvasHeight;
     width: 17px;
 }
 
@@ -90,7 +94,7 @@
 
 // Color Display
 .colorDisplay {
-    height: 300px;
+    @include canvasHeight;
     width: 100px;
     display: inline-block;
     margin-right: 16px;

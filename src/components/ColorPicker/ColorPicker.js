@@ -50,9 +50,11 @@ export default class ColorPicker extends PureComponent { // eslint-disable-line
 	render() {
 		return (
 			<ColorContext.Provider value={this.state}>
-				<ColorDisplay />
-				<SVColorBox />
-				<HueColorStrip />
+				<div className="colorPickerCenter">
+					<ColorDisplay />
+					<SVColorBox />
+					<HueColorStrip />
+				</div>
 			</ColorContext.Provider>
 		)
 	}
