@@ -1,8 +1,9 @@
-input {
-    width: 500px;
-}
-
 .formWrapper {
+    margin-top: 8px;
     display: flex;
     justify-content: center;
+}
+
+.formField {
+    margin: 8px 0px;
 }

@@ -10,18 +10,18 @@ export default class ColorInput extends PureComponent {
 				{
 					({ color }) => (
 						<>
+							<div
+								style={{
+									backgroundColor: color,
+								}}
+								className="colorInputPreview"
+							/>
 							<input
 								{...this.props.field}
 								type="text"
 								value={color}
 								readOnly
 								disabled
-							/>
-							<div
-								style={{
-									backgroundColor: color,
-								}}
-								className="colorInputPreview"
 							/>
 						</>
 					)
