@@ -2,6 +2,7 @@
 
 // ColorPicker
 .colorPickerCenter {
+    margin-top: 16px;
     display: flex;
     justify-content: center;
 }
@@ -59,7 +60,7 @@
 // Hue Strip
 @mixin hue {
     @include canvasHeight;
-    width: 17px;
+    width: 24px;
 }
 
 .hueStripContainer {
