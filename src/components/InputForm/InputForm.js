@@ -29,13 +29,28 @@ const InputForm = () => (
 								</Field>
 								<ErrorMessage name="relationship" component="div" />
 							</div>
-							<div
-								style={{
-									backgroundColor: color,
-									height: 18,
-									width: 50,
-								}}
-							/>
+							<div>
+								<Field
+									name="color"
+									render={({ field }) => (
+										<>
+											<input
+												{...field}
+												type="text"
+												value={color}
+												readOnly
+											/>
+											<div
+												style={{
+													backgroundColor: color,
+													height: 18,
+													width: 50,
+												}}
+											/>
+										</>
+									)}
+								/>
+							</div>
 						</Form>
 					)}
 				</Formik>

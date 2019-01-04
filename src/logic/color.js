@@ -56,10 +56,8 @@ export const hsvValuesMapper = (x, y) => ({
 export const coordinatesToColor = (hue, x, y) => {
 	const { saturation, value } = hsvValuesMapper(x, y)
 	const rgbColor = d3.rgb(hsv(hue, saturation, value))
-	return `rgb(
-		${Math.round(rgbColor.r)},
-		${Math.round(rgbColor.g)},
-		${Math.round(rgbColor.b)})`
+	// eslint-disable-next-line max-len
+	return `rgb(${Math.round(rgbColor.r)},${Math.round(rgbColor.g)},${Math.round(rgbColor.b)})`
 }
 
 export const coordinatesToHue = y => Math.round(hsvYToHueScale(y))
