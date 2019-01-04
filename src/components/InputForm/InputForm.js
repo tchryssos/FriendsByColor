@@ -8,35 +8,43 @@ const InputForm = () => (
 	<ColorContext.Consumer>
 		{
 			({ color }) => (
-				<Formik
-					initialValues={{
-						color,
-						name: '',
-						relationship: 'frd',
-					}}
-				>
-					{({ isSubmitting }) => (
-						<Form>
-							<div>
-								<Field name="name" />
-								<ErrorMessage name="name" component="div" />
-							</div>
-							<div>
-								<Field component="select" name="relationship">
-									<option value={'frd'}>Friend</option>
-									<option value={'fam'}>Family</option>
-									<option value={'rom'}>Romantic Partner</option>
-									<option value={'sex'}>Sexual Partner</option>
-									<option value={'acq'}>Acquaintance</option>
-								</Field>
-								<ErrorMessage name="relationship" component="div" />
-							</div>
-							<div>
-								<Field name="color" component={ColorInput} />
-							</div>
-						</Form>
-					)}
-				</Formik>
+				<div className="formWrapper">
+					<Formik
+						initialValues={{
+							color,
+							name: '',
+							relationship: 'def',
+						}}
+					>
+						{({ isSubmitting }) => (
+							<Form>
+								<div>
+									<Field name="name" placeholder="Name" />
+									<ErrorMessage name="name" component="div" />
+								</div>
+								<div>
+									<Field component="select" name="relationship">
+										<option
+											disabled
+											value="def"
+										>
+												--Relationship--
+										</option>
+										<option value="frd">Friend</option>
+										<option value="fam">Family</option>
+										<option value="rom">Romantic Partner</option>
+										<option value="sex">Sexual Partner</option>
+										<option value="acq">Acquaintance</option>
+									</Field>
+									<ErrorMessage name="relationship" component="div" />
+								</div>
+								<div>
+									<Field name="color" component={ColorInput} />
+								</div>
+							</Form>
+						)}
+					</Formik>
+				</div>
 			)
 		}
 	</ColorContext.Consumer>
