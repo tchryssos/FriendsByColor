@@ -1,6 +1,8 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { ColorContext } from 'logic/contexts/color'
+import { ColorInput } from './components'
+import './styles.scss'
 
 const InputForm = () => (
 	<ColorContext.Consumer>
@@ -30,26 +32,7 @@ const InputForm = () => (
 								<ErrorMessage name="relationship" component="div" />
 							</div>
 							<div>
-								<Field
-									name="color"
-									render={({ field }) => (
-										<>
-											<input
-												{...field}
-												type="text"
-												value={color}
-												readOnly
-											/>
-											<div
-												style={{
-													backgroundColor: color,
-													height: 18,
-													width: 50,
-												}}
-											/>
-										</>
-									)}
-								/>
+								<Field name="color" component={ColorInput} />
 							</div>
 						</Form>
 					)}
