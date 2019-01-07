@@ -31,6 +31,11 @@ export default class ColorInput extends PureComponent {
 	}
 }
 
+ColorInput.contextType = ColorContext
+
 ColorInput.propTypes = {
-	field: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+	/* eslint-disable react/forbid-prop-types */
+	field: PropTypes.object,
+	form: PropTypes.object,
+	/* eslint-enable */
 }

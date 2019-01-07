@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'formik'
+import './styles.scss'
 
 export default class RelationshipCheckbox extends PureComponent {
 	render() {
@@ -19,6 +20,7 @@ export default class RelationshipCheckbox extends PureComponent {
 							/>
 							<label
 								htmlFor={`check-${this.props.name}`}
+								className="checkboxLabel"
 							>
 								{this.props.label}
 							</label>
