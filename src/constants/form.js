@@ -9,3 +9,15 @@ export const RELATIONSHIP_OPTIONS = [ // eslint-disable-line import/prefer-defau
 	{ label: 'Other', name: 'oth' },
 ]
 
+export const RELATIONSHIP_INIT_VALUES = RELATIONSHIP_OPTIONS.reduce((acc, obj) => {
+	acc[obj.name] = false
+	return acc
+}, {})
+
+export const FORM_INITIAL_VALUES = {
+	name: '',
+	color: '',
+	relationship: {
+		...RELATIONSHIP_INIT_VALUES,
+	},
+}

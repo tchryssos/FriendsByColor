@@ -15,7 +15,7 @@ export default class RelationshipCheckbox extends PureComponent {
 							<input
 								{...field}
 								type="checkbox"
-								name={this.props.name}
+								name={`relationship.${this.props.name}`}
 								id={`check-${this.props.name}`}
 							/>
 							<label
