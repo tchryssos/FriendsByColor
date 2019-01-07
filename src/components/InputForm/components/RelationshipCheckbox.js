@@ -1,24 +1,36 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { Field } from 'formik'
 
 export default class RelationshipCheckbox extends PureComponent {
 	render() {
 		return (
-			<>
-				<input
-					{...this.props.field}
-					type="checkbox"
-					name={this.props.value}
-					id={`check-${this.props.value}`}
-				/>
-				<label htmlFor={`check-${this.props.value}`}>{this.props.label}</label>
-			</>
+			<Field
+				key={`${this.props.name}`}
+				name={this.props.name}
+				render={
+					({ field }) => (
+						<>
+							<input
+								{...field}
+								type="checkbox"
+								name={this.props.name}
+								id={`check-${this.props.name}`}
+							/>
+							<label
+								htmlFor={`check-${this.props.name}`}
+							>
+								{this.props.label}
+							</label>
+						</>
+					)
+				}
+			/>
 		)
 	}
 }
 
 RelationshipCheckbox.propTypes = {
-	field: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 	label: PropTypes.string,
-	value: PropTypes.string,
+	name: PropTypes.string,
 }
