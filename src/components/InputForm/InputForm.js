@@ -36,10 +36,7 @@ const InputForm = () => (
 						<Field name="color" component={ColorInput} />
 					</div>
 					<div className="formField">
-						<button
-							type="submit"
-							disabled={isSubmitting}
-						>
+						<button type="submit" disabled={isSubmitting}>
 							Submit
 						</button>
 					</div>

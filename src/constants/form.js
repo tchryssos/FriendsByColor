@@ -8,3 +8,4 @@ export const RELATIONSHIP_OPTIONS = [ // eslint-disable-line import/prefer-defau
 	{ label: 'Sexual Partner', name: 'sex' },
 	{ label: 'Other', name: 'oth' },
 ]
+
