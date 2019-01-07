@@ -44,7 +44,12 @@ const InputForm = () => (
 									<Field name="color" component={ColorInput} />
 								</div>
 								<div className="formField">
-									<button type="submit">Submit</button>
+									<button
+										type="submit"
+										disabled={isSubmitting}
+									>
+										Submit
+									</button>
 								</div>
 							</Form>
 						)}
